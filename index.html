@@ -15,6 +15,12 @@
       padding: 32px 24px;
     }
 
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
     /* ── PAGE HEADER ── */
     .page-header { margin-bottom: 28px; }
     .page-header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
@@ -292,6 +298,7 @@
       text-transform: uppercase;
       color: #aaa;
       text-align: left;
+      vertical-align: middle;
     }
     thead th:first-child { width: 40px; }
 
@@ -580,6 +587,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      vertical-align: middle;
     }
     .tbl-cb-wrap input {
       position: absolute;
@@ -620,6 +628,7 @@
   </div>
 
   <!-- Page header -->
+  <div class="container">
   <div class="page-header">
     <h1>Настройки банков</h1>
     <p>Управление программами ипотечного калькулятора</p>
@@ -805,6 +814,8 @@
       </tbody>
     </table>
   </div>
+
+  </div><!-- /container -->
 
   <!-- Download FAB -->
   <div class="fab" title="Скачать">⬇</div>
