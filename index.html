@@ -240,8 +240,12 @@
       cursor: pointer;
       white-space: nowrap;
       margin-left: 4px;
+      margin-bottom: 6px;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity .2s;
     }
+    .reset-link.visible { opacity: 1; pointer-events: auto; }
     .reset-link:hover { opacity: .75; }
 
     /* ── TABLE FILTERS ── */
@@ -935,6 +939,7 @@
       statusChecked[key] = !statusChecked[key];
       document.getElementById('cb-' + key).classList.toggle('checked', statusChecked[key]);
       updateBadge();
+      updateResetVisibility();
     }
 
     function updateBadge() {
@@ -950,6 +955,7 @@
         document.getElementById('cb-' + k).classList.remove('checked');
       });
       updateBadge();
+      updateResetVisibility();
     }
 
     // Close dropdown on outside click
@@ -962,7 +968,18 @@
       resetStatus();
       document.getElementById('dateFrom').value = '';
       document.getElementById('dateTo').value   = '';
+      updateResetVisibility();
     }
+
+    function updateResetVisibility() {
+      const hasStatus = Object.values(statusChecked).some(Boolean);
+      const hasDate   = document.getElementById('dateFrom').value || document.getElementById('dateTo').value;
+      document.querySelector('.reset-link').classList.toggle('visible', !!(hasStatus || hasDate));
+    }
+
+    // Watch date inputs
+    document.getElementById('dateFrom').addEventListener('change', updateResetVisibility);
+    document.getElementById('dateTo').addEventListener('change', updateResetVisibility);
 
     // ── Toggle change → show toast ──
     function onToggleChange(input) {
