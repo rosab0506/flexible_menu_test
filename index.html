@@ -83,7 +83,7 @@
     /* ── FILTER BAR ── */
     .filter-bar {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       gap: 12px;
       margin-bottom: 16px;
       flex-wrap: wrap;
@@ -571,24 +571,40 @@
     .programs-empty .pe-icon { font-size: 32px; margin-bottom: 10px; }
 
     /* Checkbox table */
-    .tbl-cb {
-      width: 16px; height: 16px;
-      border: 2px solid #ccc;
-      border-radius: 4px;
+    .tbl-cb-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
+    }
+    .tbl-cb-wrap input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .tbl-cb-box {
+      width: 16px; height: 16px;
+      border: 1.5px solid #c5cad3;
+      border-radius: 4px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: border-color .15s, background .15s;
+      flex-shrink: 0;
     }
-    .tbl-cb:checked { background: #4f7ef8; border-color: #4f7ef8; }
-    .tbl-cb:checked::after {
-      content: '';
+    .tbl-cb-wrap input:checked + .tbl-cb-box {
+      background: #4f7ef8;
+      border-color: #4f7ef8;
+    }
+    .tbl-cb-box svg {
+      display: none;
+      width: 10px; height: 10px;
+    }
+    .tbl-cb-wrap input:checked + .tbl-cb-box svg {
       display: block;
-      width: 8px; height: 5px;
-      border-left: 2px solid #fff;
-      border-bottom: 2px solid #fff;
-      transform: rotate(-45deg) translate(2px, 1px);
     }
+    .tbl-cb-wrap:hover .tbl-cb-box { border-color: #4f7ef8; }
   </style>
 </head>
 <body>
@@ -714,7 +730,7 @@
     <table>
       <thead>
         <tr>
-          <th><input type="checkbox" class="tbl-cb"/></th>
+          <th><label class="tbl-cb-wrap"><input type="checkbox"/><span class="tbl-cb-box"><svg viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></label></th>
           <th>Банк</th>
           <th>Ипотечные программы</th>
           <th>Статус</th>
@@ -724,7 +740,7 @@
       <tbody>
         <!-- Row 1: Сбербанк -->
         <tr>
-          <td><input type="checkbox" class="tbl-cb"/></td>
+          <td><label class="tbl-cb-wrap"><input type="checkbox"/><span class="tbl-cb-box"><svg viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></label></td>
           <td>
             <div class="bank-cell">
               <div class="bank-logo">СБ</div>
@@ -755,7 +771,7 @@
 
         <!-- Row 2: ВТБ -->
         <tr>
-          <td><input type="checkbox" class="tbl-cb"/></td>
+          <td><label class="tbl-cb-wrap"><input type="checkbox"/><span class="tbl-cb-box"><svg viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></label></td>
           <td>
             <div class="bank-cell">
               <div class="bank-logo">
