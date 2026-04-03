@@ -668,7 +668,7 @@
     <div class="dropdown-wrap" id="statusWrap">
       <div class="dropdown-trigger" id="statusTrigger" onclick="toggleDropdown()">
         <span>Статус:</span>
-        <span class="badge" id="statusBadge">1</span>
+        <span class="badge" id="statusBadge" style="display:none">0</span>
         <span class="arrow">▾</span>
       </div>
       <div class="dropdown-panel" id="statusPanel">
@@ -677,7 +677,7 @@
           <span>Активен</span>
         </div>
         <div class="dd-option" onclick="toggleOption(this, 'inactive')">
-          <div class="cb checked" id="cb-inactive"></div>
+          <div class="cb" id="cb-inactive"></div>
           <span>Неактивен</span>
         </div>
         <div class="dd-footer">
@@ -921,7 +921,7 @@
 
   <script>
     // ── Dropdown logic ──
-    const statusChecked = { active: false, inactive: true };
+    const statusChecked = { active: false, inactive: false };
 
     function toggleDropdown() {
       const trigger = document.getElementById('statusTrigger');
